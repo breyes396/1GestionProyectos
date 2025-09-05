@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<h:html xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:h="http://xmlns.jcp.org/jsf/html"
+        xmlns:f="http://xmlns.jcp.org/jsf/core"
+        xmlns:p="http://primefaces.org/ui">
+    <link rel="stylesheet" href="style.css"/>
+    <h:body>
+        <h:form>
+
+
+            <h:outputText value="GESTION DE PROYECTOS" style="font-weight:bold; font-size:40px;" />
+            <p:panel  style="width:800px; margin:auto; margin-top:250px;">
+
+                <p:spacer height="30" />
+
+                <p:commandButton value="MIS PROYECTOS" action="#{menuPrincipal.irIndex}"
+                                 icon="pi pi-sign-in" styleClass="p-button-primary" style="width:100%;" />
+
+                <p:spacer height="30" />
+
+                <p:commandButton value="CREAR UN NUEVO PROYECTO" action="#{menuPrincipal.irIndex}"
+                                 icon="pi pi-user-plus" styleClass="p-button-success" style="width:100%;" />
+
+                <p:spacer height="30" />
+
+                <p:commandButton value="MI PERFIL" action="#{menuPrincipal.irIndex}"
+                                 icon="pi pi-info-circle" styleClass="p-button-info" style="width:100%;" />
+                <p:spacer height="30" />
+
+                <p:commandButton value="CERRAR SESION" action="#{menuPrincipal.irIndex}"
+                                 icon="pi pi-info-circle" styleClass="p-button-info" style="width:100%;" />
+
+
+
+            </p:panel>
+
+
+        </h:form>
+
+    </h:body>
+</h:html>
