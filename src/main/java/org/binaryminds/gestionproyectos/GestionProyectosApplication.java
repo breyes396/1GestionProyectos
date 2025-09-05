@@ -38,7 +38,7 @@ public class GestionProyectosApplication implements CommandLineRunner {
 	}
 
 	private void gestionProyectosApp() {
-		logger.info(sl+sl+"+++++++++SISTEMA DE GESTIÓN DE PROYECTOS+++++++++");
+		logger.info(sl+sl+"+++++++++SISTEMA DE GESTIÓN DE PROYECTOS++++++++++");
 		var salir = false;
 		var consola = new Scanner(System.in);
 		while (!salir) {
