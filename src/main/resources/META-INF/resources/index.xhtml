@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<h:html xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:h="http://xmlns.jcp.org/jsf/html"
+        xmlns:f="http://xmlns.jcp.org/jsf/core"
+        xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Gestion de Proyectos y tareas</title>
+    </h:head>
+    <link rel="stylesheet" href="style.css"/>
+    <h:body>
+        <h:form>
+
+            <h:outputText value="#{indexController.mensaje}" style="font-weight:bold; font-size:40px;" />
+            <p:panel  style="width:800px; margin:auto; margin-top:250px;">
+
+                <p:spacer height="30" />
+
+                <p:commandButton value="Iniciar Sesión" action="#{indexController.irLogin}"
+                                 icon="pi pi-sign-in" styleClass="p-button-primary" style="width:100%;" />
+
+                <p:spacer height="30" />
+
+                <p:commandButton value="Registrarse" action="#{indexController.irRegistrarse}"
+                                 icon="pi pi-user-plus" styleClass="p-button-success" style="width:100%;" />
+
+                <p:spacer height="30" />
+
+                <p:commandButton value="Acerca de" action="#{indexController.irAcercaDe}"
+                                 icon="pi pi-info-circle" styleClass="p-button-info" style="width:100%;" />
+
+            </p:panel>
+
+        </h:form>
+
+    </h:body>
+</h:html>
