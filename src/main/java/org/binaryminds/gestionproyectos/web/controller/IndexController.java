@@ -11,7 +11,7 @@ public class IndexController {
 
     private String mensaje= "Bienvenido a tu Aplicacion de Gestion de Proyectos";
     public String irLogin(){
-        return "login.xhtml?faces-redirect=true";
+        return "menu_principal.xhtml?faces-redirect=true";
     }
 
     public String irRegistrarUsuarios(){
