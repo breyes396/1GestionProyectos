@@ -1,8 +1,12 @@
 package org.binaryminds.gestionproyectos;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Scanner;
+
+import org.binaryminds.gestionproyectos.dominio.service.IProyectoService;
 import org.binaryminds.gestionproyectos.dominio.service.IUsuarioService;
+import org.binaryminds.gestionproyectos.persistence.entity.Proyecto;
 import org.binaryminds.gestionproyectos.persistence.entity.Usuario;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,6 +20,9 @@ public class GestionProyectosApplication implements CommandLineRunner {
 
 	@Autowired
 	private IUsuarioService usuarioService;
+
+	@Autowired
+	private IProyectoService proyectoService;
 
 	private static final Logger logger = LoggerFactory.getLogger(GestionProyectosApplication.class);
 
@@ -46,7 +53,9 @@ public class GestionProyectosApplication implements CommandLineRunner {
 				\n***Aplicación***
 				1. Registrar usuario
 				2. Iniciar sesion
-				3. Salir.
+				3. Agregar proyecto
+				4. Eliminar proyecto
+				5. Salir.
 				Elije una opción: \s""");
 		var opcion = Integer.parseInt(consola.nextLine());
 		return opcion;
@@ -56,7 +65,7 @@ public class GestionProyectosApplication implements CommandLineRunner {
 		var salir = false;
 		switch (opcion) {
 			case 1 -> {
-				logger.info("***REGITRAR USUARIO***"+sl);
+				logger.info("***REGISTRAR USUARIO***"+sl);
 				logger.info("Ingrese su nombre: ");
 				var nombre = consola.nextLine();
 				logger.info("Ingrese su email: ");
@@ -93,7 +102,36 @@ public class GestionProyectosApplication implements CommandLineRunner {
 
 			}
 			case 3 -> {
-				logger.info("Hasta pronto. vaquero!"+sl+sl);
+				logger.info(sl+"***AGREGAR PROYECTO***"+sl);
+				logger.info(sl+"Ingrese el nombre del proyecto: ");
+				var nombre = consola.nextLine();
+
+				var proyecto = new Proyecto();
+				proyecto.setNombre(nombre);
+				proyecto.setFecha_inicio(LocalDate.now());
+
+				proyectoService.guardarProyecto(proyecto);
+			}
+			case 4 -> {
+				logger.info(sl+"***ELIMINAR PROYECTO***"+sl);
+				List<Proyecto> proyectos = proyectoService.listarProyectos();
+				proyectos.forEach(proyecto -> logger.info(proyecto.toString()+sl));
+				if (proyectos==null){
+					logger.info(sl+"No hay proyectos para eliminar");
+				}else{
+					logger.info(sl+"Ingrese el id del proyecto a eliminar: ");
+					var id = Integer.parseInt(consola.nextLine());
+					var proyecto = proyectoService.buscarProyectoPorId(id);
+					if (proyecto!=null){
+						logger.info(sl+"Proyecto: " +proyecto.getNombre() + " eliminado correctamente");
+						proyectoService.eliminarProyecto(proyecto);
+					}else {
+						logger.info(sl+"Codigo de proyecto invalido");
+					}
+				}
+			}
+			case 5 -> {
+				logger.info(sl+sl+"Hasta pronto. vaquero!"+sl+sl);
 				salir = true;
 				System.exit(0);
 			}
